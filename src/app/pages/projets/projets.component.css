@@ -1,0 +1,89 @@
+:host {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  padding: 0 1rem;
+  box-sizing: border-box;
+}
+
+.projets-container {
+  width: 100%;
+  max-width: 800px;
+  background-color: #ffffff;
+  padding: 2rem 2.5rem;
+  border-radius: 16px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+  font-family: 'Segoe UI', sans-serif;
+  color: #2c3e50;
+  line-height: 1.6;
+  text-align: center;
+}
+
+h2 {
+  font-size: 2.2rem;
+  font-weight: 600;
+  margin-bottom: 1.8rem;
+  color: #34495e;
+}
+
+.projet-section {
+  margin-bottom: 1.5rem;
+  text-align: left;
+
+  h3 {
+    font-size: 1.4rem;
+    margin-bottom: 0.5rem;
+    color: #2980b9;
+  }
+
+  p {
+    font-size: 1rem;
+    color: #444;
+    margin: 0;
+  }
+
+  strong {
+    color: #2c3e50;
+  }
+
+  em {
+    font-style: normal;
+    font-weight: 500;
+    color: #666;
+  }
+}
+
+.btn-retour {
+  margin-top: 1rem;
+  padding: 0.6rem 1.4rem;
+  background-color: #3498db;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+
+  &:hover {
+    background-color: #2980b9;
+  }
+}
+
+@media (max-height: 750px) {
+  .projets-container {
+    padding: 1.5rem 2rem;
+  }
+
+  h2 {
+    font-size: 1.8rem;
+  }
+
+  .projet-section h3 {
+    font-size: 1.2rem;
+  }
+
+  .projet-section p {
+    font-size: 0.95rem;
+  }
+}

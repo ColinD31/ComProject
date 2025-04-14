@@ -1,0 +1,53 @@
+<div class="cv-puzzle-container">
+  <div class="puzzle-header">
+    <h2>Reconstituez mon CV</h2>
+    <p>Faites glisser les pièces pour reconstituer l'image du CV</p>
+    <button (click)="resetPuzzle()" class="shuffle-button">Mélanger</button>
+  </div>
+  
+  <div class="puzzle-grid" [style.grid-template-columns]="'repeat(' + columns + ', 100px)'" [style.grid-template-rows]="'repeat(' + rows + ', 100px)'">
+    <ng-container *ngFor="let position of [].constructor(rows * columns); let i = index">
+      <div class="puzzle-cell" 
+           [ngClass]="{'drop-target': dropTarget === i}"
+           (dragover)="onDragOver($event, i)" 
+           (dragleave)="onDragLeave()" 
+           (drop)="onDrop($event, i)">
+        
+        <ng-container *ngIf="getPieceAtPosition(i)">
+          <div class="puzzle-piece" 
+               draggable="true"
+               (dragstart)="onDragStart($event, getPieceAtPosition(i)!)"
+               [ngClass]="{'correct-position': getPieceAtPosition(i)?.currentPosition === getPieceAtPosition(i)?.correctPosition}">
+            
+            <div class="piece-content" 
+                 [style.background-image]="'url(' + cvImageUrl + ')'"
+                 [style.background-position]="getPieceAtPosition(i)?.bgPosition">
+            </div>
+            
+            <div class="piece-number">{{ (getPieceAtPosition(i)?.id !== undefined ? getPieceAtPosition(i)!.id + 1 : 0) }}</div>
+          </div>
+        </ng-container>
+        
+      </div>
+    </ng-container>
+  </div>
+  
+  <div *ngIf="isCompleted" class="completion-message">
+    <h3>Félicitations!</h3>
+    <p>Vous avez reconstruit mon CV avec succès.</p>
+    <button (click)="resetPuzzle()" class="restart-button">Recommencer</button>
+  </div>
+  
+  @if (isCompleted) {
+    <div class="puzzle-reference">
+      <h4>CV pour référence</h4>
+      <div class="reference-image" [style.background-image]="'url(' + cvImageUrl + ')'"></div>
+    </div>
+  }
+    <!-- Button Container for Alignment -->
+    <div class="button-container">
+      <a routerLink="/" class="home-button">Retour à l'accueil</a>
+      <!-- Assumes 'cvId' property exists in the component's TS class -->
+      <a [routerLink]="['/projets', cvId]" class="home-button">Voir mon profil</a>
+    </div>
+</div>

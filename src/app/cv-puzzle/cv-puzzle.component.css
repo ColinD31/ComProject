@@ -1,0 +1,224 @@
+:host {
+  display: block;
+  font-family: 'Roboto', sans-serif; /* Police moderne */
+}
+
+/* Container for bottom buttons */
+.button-container {
+  display: flex; /* Use flexbox for alignment */
+  justify-content: space-between; /* Space buttons to opposite ends */
+  align-items: center; /* Align items vertically */
+  margin-top: 40px; /* Add space above the buttons */
+  padding: 0 20px; /* Add some padding if needed inside the container */
+}
+
+.home-button {
+  background-color: #3498db; /* Fond bleu */
+  color: white; /* Texte blanc */
+  border: none; /* Pas de bordure */
+  padding: 12px 24px; /* Espacement interne */
+  font-size: 16px; /* Taille de police */
+  border-radius: 8px; /* Coins arrondis */
+  text-decoration: none; /* Supprime le soulignement du lien */
+  display: inline-block; /* Comportement de bloc en ligne */
+  /* margin: 20px 0; Removed margin-top/bottom here, handled by container */
+  cursor: pointer; /* Curseur de type pointeur */
+  transition: background-color 0.3s, box-shadow 0.3s, transform 0.2s; /* Durée de transition */
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2); /* Ombre légère */
+  position: relative; /* Position relative pour pouvoir ajouter des effets */
+  text-align: center; /* Centrage du texte */
+}
+
+.home-button:hover {
+  background-color: #2980b9; /* Bleu plus foncé au survol */
+  box-shadow: 0 6px 12px rgba(0,0,0,0.3); /* Ombre plus prononcée au survol */
+  transform: translateY(-2px); /* Léger effet de flottement */
+}
+
+.home-button:active {
+  transform: translateY(1px); /* Effet d'enfoncement au clic */
+  box-shadow: 0 2px 4px rgba(0,0,0,0.2); /* Ombre réduite au clic */
+}
+
+
+.cv-puzzle-container {
+  max-width: 800px; /* Adjusted max-width to better fit reference image */
+  margin: 0 auto;
+  padding: 40px; /* Plus d’espace */
+  border-radius: 10px; /* Coins arrondis */
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1); /* Ombre douce */
+}
+
+.puzzle-header {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.puzzle-header h2 {
+  font-size: 28px; /* Taille augmentée */
+  color: #34495e; /* Couleur plus riche */
+  margin-bottom: 15px;
+}
+
+.puzzle-header p {
+  color: #7f8c8d;
+  margin-bottom: 20px;
+}
+
+.puzzle-header .shuffle-button {
+  background-color: #3498db; /* Bleu vif */
+  color: white;
+  border: none;
+  padding: 12px 24px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s, transform 0.2s; /* Ajout de transform */
+}
+
+.puzzle-header .shuffle-button:hover {
+  background-color: #2980b9; /* Bleu plus sombre */
+  transform: translateY(-2px); /* Légère élévation au survol */
+}
+
+.puzzle-grid {
+  display: grid;
+  gap: 4px; /* Plus d’espace entre les cellules */
+  margin: 0 auto;
+  width: fit-content;
+  background-color: #ecf0f1; /* Fond gris clair */
+  padding: 4px;
+  border-radius: 8px;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1); /* Ombre subtile */
+}
+
+.puzzle-cell {
+  width: 100px;
+  height: 100px;
+  background-color: rgba(236, 240, 241, 0.7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.3s, box-shadow 0.3s;
+}
+
+.puzzle-cell.drop-target {
+  background-color: rgba(52, 152, 219, 0.4); /* Bleu semi-transparent */
+  box-shadow: 0 0 10px rgba(52, 152, 219, 0.6); /* Ombre bleue */
+}
+
+.puzzle-piece {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  cursor: grab;
+  transition: transform 0.2s;
+}
+
+.puzzle-piece:active {
+  cursor: grabbing;
+  transform: scale(1.05); /* Légère augmentation de taille */
+}
+
+.puzzle-piece.correct-position .piece-content {
+  box-shadow: inset 0 0 0 4px rgba(46, 204, 113, 0.8); /* Vert pour position correcte */
+}
+
+.puzzle-piece .piece-content {
+  width: 100%;
+  height: 100%;
+  background-size: 300px 300px; /* Assuming 3x3 grid, adjust if needed */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15); /* Ombre plus marquée */
+  border-radius: 4px;
+  overflow: hidden;
+  transition: box-shadow 0.3s;
+}
+
+.puzzle-piece .piece-number {
+  position: absolute;
+  top: 8px;
+  left: 8px;
+  background-color: rgba(0, 0, 0, 0.7);
+  color: white;
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  font-size: 14px;
+  pointer-events: none;
+}
+
+.completion-message {
+  margin-top: 40px;
+  padding: 25px;
+  background-color: #2ecc71; /* Vert vif */
+  color: white;
+  text-align: center;
+  border-radius: 8px;
+  animation: fadeIn 0.5s; /* Animation de fondu */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.completion-message h3 {
+  font-size: 26px;
+  margin-bottom: 15px;
+}
+
+.completion-message .restart-button {
+  background-color: white;
+  color: #2ecc71;
+  border: none;
+  padding: 12px 24px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 16px;
+  margin-top: 15px;
+  transition: background-color 0.3s, transform 0.2s;
+}
+
+.completion-message .restart-button:hover {
+  background-color: #f1f1f1;
+  transform: translateY(-2px); /* Effet au survol */
+}
+
+.puzzle-reference {
+  margin-top: 50px;
+  text-align: center;
+}
+
+.puzzle-reference h4 {
+  font-size: 20px;
+  color: #34495e;
+  margin-bottom: 20px;
+}
+
+.puzzle-reference .reference-image {
+  width: 800px;
+  height: 800px;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  margin: 0 auto;
+  border: 2px solid #bdc3c7;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Adjustments for puzzle piece background size if needed */
+/* Example: If the puzzle is 4x4 (400px grid) */
+/*
+.puzzle-piece .piece-content {
+  background-size: 400px 400px;
+}
+.puzzle-reference .reference-image {
+  width: 400px;
+  height: 400px;
+}
+*/
